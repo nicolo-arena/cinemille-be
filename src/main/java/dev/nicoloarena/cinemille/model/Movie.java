@@ -2,6 +2,7 @@ package dev.nicoloarena.cinemille.model;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -18,7 +19,7 @@ public class Movie extends CommonEntity {
     private Integer year;
 
     @Column
-    private LocalDateTime released;
+    private LocalDate released;
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Country country;
@@ -62,11 +63,11 @@ public class Movie extends CommonEntity {
         this.year = year;
     }
 
-    public LocalDateTime getReleased() {
+    public LocalDate getReleased() {
         return released;
     }
 
-    public void setReleased(LocalDateTime released) {
+    public void setReleased(LocalDate released) {
         this.released = released;
     }
 

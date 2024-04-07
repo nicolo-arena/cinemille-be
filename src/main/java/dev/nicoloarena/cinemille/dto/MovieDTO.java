@@ -2,7 +2,7 @@ package dev.nicoloarena.cinemille.dto;
 
 import dev.nicoloarena.cinemille.model.*;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.List;
 
 public class MovieDTO {
@@ -13,7 +13,7 @@ public class MovieDTO {
 
     private Integer year;
 
-    private LocalDateTime released;
+    private LocalDate released;
 
     private String country;
 
@@ -67,11 +67,11 @@ public class MovieDTO {
         this.year = year;
     }
 
-    public LocalDateTime getReleased() {
+    public LocalDate getReleased() {
         return released;
     }
 
-    public void setReleased(LocalDateTime released) {
+    public void setReleased(LocalDate released) {
         this.released = released;
     }
 
