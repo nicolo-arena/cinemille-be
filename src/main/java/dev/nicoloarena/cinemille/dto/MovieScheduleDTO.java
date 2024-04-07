@@ -2,44 +2,44 @@ package dev.nicoloarena.cinemille.dto;
 
 import dev.nicoloarena.cinemille.model.MovieSchedule;
 
-import java.time.LocalDateTime;
-import java.time.LocalTime;
+import java.time.LocalDate;
+import java.util.List;
 
 public class MovieScheduleDTO {
 
-    private LocalDateTime startDate;
+    private LocalDate startDate;
 
-    private LocalDateTime endDate;
+    private LocalDate endDate;
 
-    private LocalTime time;
+    private List<MovieSessionDTO> movieSessions;
 
     public MovieScheduleDTO(MovieSchedule movieSchedule) {
         this.startDate = movieSchedule.getStartDate();
         this.endDate = movieSchedule.getEndDate();
-        this.time = LocalTime.ofSecondOfDay(movieSchedule.getTime());
+        this.movieSessions = movieSchedule.getMovieSessions().stream().map(MovieSessionDTO::new).toList();
     }
 
-    public LocalDateTime getStartDate() {
+    public LocalDate getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(LocalDateTime startDate) {
+    public void setStartDate(LocalDate startDate) {
         this.startDate = startDate;
     }
 
-    public LocalDateTime getEndDate() {
+    public LocalDate getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(LocalDateTime endDate) {
+    public void setEndDate(LocalDate endDate) {
         this.endDate = endDate;
     }
 
-    public LocalTime getTime() {
-        return time;
+    public List<MovieSessionDTO> getMovieSessions() {
+        return movieSessions;
     }
 
-    public void setTime(LocalTime time) {
-        this.time = time;
+    public void setMovieSessions(List<MovieSessionDTO> movieSessions) {
+        this.movieSessions = movieSessions;
     }
 }

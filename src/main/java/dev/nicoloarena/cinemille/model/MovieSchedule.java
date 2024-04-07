@@ -1,57 +1,56 @@
 package dev.nicoloarena.cinemille.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 
-import java.time.LocalDateTime;
-import java.time.LocalTime;
+import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 public class MovieSchedule extends CommonEntity {
 
     @Column
-    private LocalDateTime startDate;
+    private LocalDate startDate;
 
     @Column
-    private LocalDateTime endDate;
-
-    @Column
-    private Integer time; // minutes after midnight
+    private LocalDate endDate;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    private Room room;
+    @JoinColumn(name = "movie_id")
+    private Movie movie;
 
-    public LocalDateTime getStartDate() {
+    @OneToMany(fetch = FetchType.LAZY)
+    @JoinColumn(name = "movie_schedule_id")
+    private List<MovieSession> movieSessions;
+
+    public LocalDate getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(LocalDateTime startDate) {
+    public void setStartDate(LocalDate startDate) {
         this.startDate = startDate;
     }
 
-    public LocalDateTime getEndDate() {
+    public LocalDate getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(LocalDateTime endDate) {
+    public void setEndDate(LocalDate endDate) {
         this.endDate = endDate;
     }
 
-    public Integer getTime() {
-        return time;
+    public Movie getMovie() {
+        return movie;
     }
 
-    public void setTime(Integer time) {
-        this.time = time;
+    public void setMovie(Movie movie) {
+        this.movie = movie;
     }
 
-    public Room getRoom() {
-        return room;
+    public List<MovieSession> getMovieSessions() {
+        return movieSessions;
     }
 
-    public void setRoom(Room room) {
-        this.room = room;
+    public void setMovieSessions(List<MovieSession> movieSessions) {
+        this.movieSessions = movieSessions;
     }
 }
