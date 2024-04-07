@@ -13,9 +13,6 @@ public class Genre extends CommonEntity{
     @Column
     private String name;
 
-    @ManyToMany(fetch = FetchType.LAZY)
-    private List<Movie> movies;
-
     public String getName() {
         return name;
     }
@@ -24,11 +21,4 @@ public class Genre extends CommonEntity{
         this.name = name;
     }
 
-    public List<Movie> getMovies() {
-        return movies;
-    }
-
-    public void setMovies(List<Movie> movies) {
-        this.movies = movies;
-    }
 }
