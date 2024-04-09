@@ -29,8 +29,7 @@ public class Movie extends CommonEntity {
     @ManyToMany(fetch = FetchType.LAZY)
     private List<Genre> genres;
 
-    @OneToMany(fetch = FetchType.LAZY)
-    @JoinColumn(name = "movie_id")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "movie")
     private List<MovieSchedule> movieSchedules;
 
     @ManyToMany(fetch = FetchType.LAZY)

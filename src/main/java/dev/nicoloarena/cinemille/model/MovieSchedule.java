@@ -15,11 +15,10 @@ public class MovieSchedule extends CommonEntity {
     private LocalDate endDate;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "movie_id")
+    @JoinColumn
     private Movie movie;
 
-    @OneToMany(fetch = FetchType.LAZY)
-    @JoinColumn(name = "movie_schedule_id")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "movieSchedule")
     private List<MovieSession> movieSessions;
 
     public LocalDate getStartDate() {

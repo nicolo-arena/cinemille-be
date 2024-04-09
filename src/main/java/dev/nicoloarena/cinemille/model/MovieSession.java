@@ -12,7 +12,7 @@ public class MovieSession extends CommonEntity {
     private Room room;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "movie_schedule_id")
+    @JoinColumn
     private MovieSchedule movieSchedule;
 
     public Integer getTime() {
