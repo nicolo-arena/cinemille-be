@@ -24,8 +24,8 @@ public class MovieController {
     public ResponseEntity<List<MovieDTO>> getMovies(@RequestParam(required = false) String start, @RequestParam(required = false) String end) {
         DateTimeFormatter dateTimeFormat = DateTimeFormatter.ISO_DATE;
 
-        LocalDate startDate = start.isBlank() ? null : dateTimeFormat.parse(start, LocalDate::from);
-        LocalDate endDate = end.isBlank() ? null : dateTimeFormat.parse(end, LocalDate::from);
+        LocalDate startDate = start == null || start.isBlank() ? null : dateTimeFormat.parse(start, LocalDate::from);
+        LocalDate endDate = end == null || end.isBlank() ? null : dateTimeFormat.parse(end, LocalDate::from);
 
         List<MovieDTO> movies = this.movieService.getMoviesInRange(startDate, endDate);
         return ResponseEntity.ok(movies);
